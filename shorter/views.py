@@ -12,9 +12,9 @@ def submit(request):
         # check whether it's valid:
         if form.is_valid():
             # process the data in form.cleaned_data as required
-            #kwargs = {'url': form.cleaned_data['url']}
-            #link = Link.objects.create(**kwargs)
-            link = form.cleaned_data['url']
+            kwargs = {'url': form.cleaned_data['url']}
+            link = Link.objects.create(**kwargs)
+            #link = form.cleaned_data['url']
             # redirect to a new URL:
             return render(request, 'urls/success.html', {'link': link})
         else:
