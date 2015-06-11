@@ -16,15 +16,18 @@ def submit(request):
             link = Link.objects.create(**kwargs)
             #link = form.cleaned_data['url']
             # redirect to a new URL:
-            return render(request, 'urls/success.html', {'link': link})
+            values = {'form' : form, 'link' : link}
+            return render(request, 'urls/success.html', values)
         else:
-            return render(request, 'urls/failure.html', {'link_form': form})
+            return render(request, 'urls/failure.html', {'form': form})
 
     # if a GET (or any other method) we'll create a blank form
 
     
 
 def index(request):
-    #values = {'link_form' : SubmitForm()}
+    values = {'form' : SubmitForm(),
+              'recent_links' : Link.objects.all()
+             }
     
-    return render(request, 'urls/index.html', {'form' : SubmitForm()})
+    return render(request, 'urls/index.html', values)

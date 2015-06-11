@@ -1,14 +1,27 @@
 {% extends "base.html" %}
-
+{% load shorter_tags %}
 
 {% block content %}
+
+
 <h2>Recent Links</h2>
-<ul>
 
-</ul>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Long URL</th>
+            <th>Short URL</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for link in recent_links %}
+        <tr>
+            <td><li><a href="{{ link.url }}">{{ link.url }}</a></li></td>
+            <td><li><a href="{% short_it link %}">{% short_it link %}</a></li></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
-<h2>Most Popular Links</h2>
-<ul>
 
-</ul>
 {% endblock content %}
