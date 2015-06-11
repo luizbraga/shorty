@@ -1,9 +1,10 @@
 {% extends "base.html" %}
+{% load shorter_tags %}
 
 {% block content %}
 The following URL:<br/>
 <pre>{{ link }}</pre>
 <br/>
 Was shortened to:<br/>
-<input id="link" type="text" size="30" value="{{ short_it link }}"/>
+<input id="link" type="text" size="30" value="{% short_it link %}"/>
 {% endblock content %}
