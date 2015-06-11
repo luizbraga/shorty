@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+The following URL:<br/>
+<pre>{{ link }}</pre>
+<br/>
+Was shortened to:<br/>
+<input id="link" type="text" size="30" value="{{ short_it link }}"/>
+{% endblock content %}
